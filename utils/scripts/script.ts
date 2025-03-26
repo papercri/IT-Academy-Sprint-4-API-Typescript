@@ -1,4 +1,5 @@
 import { getNewJoke, showJoke, scoreButtons, ReportAcudits, reportAcudits, getJoke, currentJoke, displayJoke, rateJoke } from "./dadJoke.js"
+import { WeatherData, IpInfoData, saludoEl, climaEl, getWeather, getLocation} from "./weather.js"
 
 // Crear botones de puntuación
 if (scoreButtons) {
@@ -20,4 +21,8 @@ if (getNewJoke) {
 }
 
 // Onload
+
 displayJoke();
+getLocation();
+
+

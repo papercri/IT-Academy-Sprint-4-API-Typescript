@@ -14,7 +14,9 @@
 </head>
 <body>
     <div class="container text-center d-flex align-items-center justify-content-center min-vh-100">
-        <div class="card shadow-sm text-center d-flex align-items-center justify-content-center flex-column gap-4">
+        <div class="card shadow-lg text-center d-flex align-items-center justify-content-center flex-column gap-4">
+            <p id="saludo"></p>
+            <p id="clima">Loading weather...</p>
             <h1>Are you ready to laugh?? <span class="fa-solid fa-face-grin-squint-tears"></span></h1>
             <h3 id="show-joke" class="mt-2">Loading joke...</h3>
             <div id="score-buttons" class=" mt-2 d-flex gap-2"></div>
@@ -22,6 +24,6 @@
         </div>
        
     </div>
-    <script src="utils/scripts/script.js" type="module"></script>
+    <script src="utils/scripts/script.js" type="module" defer></script>
 </body>
 </html>

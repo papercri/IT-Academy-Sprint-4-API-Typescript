@@ -1,4 +1,5 @@
 import { getNewJoke, scoreButtons, displayJoke, rateJoke } from "./dadJoke.js";
+import { getLocation } from "./weather.js";
 // Crear botones de puntuación
 if (scoreButtons) {
     [1, 2, 3].forEach(score => {
@@ -18,3 +19,4 @@ if (getNewJoke) {
 }
 // Onload
 displayJoke();
+getLocation();
