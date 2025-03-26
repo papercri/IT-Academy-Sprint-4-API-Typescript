@@ -27,18 +27,15 @@ Este proyecto es una aplicación web que utiliza una API para obtener chistes y 
     ```bash
     cd IT-Academy-Sprint-4-API-Typescript
 
-
 3. Instala las dependencias necesarias:
 
     ```bash
     npm install
 
-
 4. Compila el código TypeScript a JavaScript:
 
     ```bash
     npm tsc
-
 
 5. Abre el archivo index.html en tu navegador para ver la aplicación en acción.
 

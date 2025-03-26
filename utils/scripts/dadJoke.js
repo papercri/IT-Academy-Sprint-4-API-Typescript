@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -52,20 +51,4 @@ const rateJoke = (score) => {
     }
     console.log(reportAcudits);
 };
-// Crear botones de puntuación
-if (scoreButtons) {
-    [1, 2, 3].forEach(score => {
-        const button = document.createElement("button");
-        button.classList.add("btn");
-        button.classList.add("btn-secondary");
-        button.textContent = score.toString();
-        button.addEventListener("click", () => rateJoke(score));
-        scoreButtons.appendChild(button);
-    });
-}
-// Evento para obtener un nuevo chiste
-if (getNewJoke) {
-    getNewJoke.addEventListener("click", displayJoke);
-}
-// Onload
-displayJoke();
+export { getNewJoke, showJoke, scoreButtons, reportAcudits, getJoke, currentJoke, displayJoke, rateJoke };
