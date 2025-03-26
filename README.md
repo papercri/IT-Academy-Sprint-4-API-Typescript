@@ -36,7 +36,7 @@ Este proyecto es una aplicación web que utiliza una API para obtener chistes y 
 
 4. Compila el código TypeScript a JavaScript:
 
-  ```bash
+    ```bash
     npm tsc
 
 
