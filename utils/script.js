@@ -10,6 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const getNewJoke = document.getElementById("new-joke");
 const showJoke = document.getElementById("show-joke");
+const scoreButtons = document.getElementById("score-buttons");
+const reportAcudits = [];
+//Fetch Joke
 const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch("https://icanhazdadjoke.com/", {
@@ -18,7 +21,7 @@ const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
             }
         });
         if (!response.ok) {
-            throw new Error("Error retrieving dad joke!");
+            throw new Error("Error getting new joke!");
         }
         const jokeJSON = yield response.json();
         return jokeJSON.joke;
@@ -27,11 +30,42 @@ const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         return error.message;
     }
 });
+let currentJoke = "";
 const displayJoke = () => __awaiter(void 0, void 0, void 0, function* () {
-    const joke = yield getJoke();
-    console.log(joke);
+    currentJoke = yield getJoke();
+    console.log(currentJoke);
     if (showJoke) {
-        showJoke.textContent = joke;
+        showJoke.textContent = currentJoke;
     }
 });
+const rateJoke = (score) => {
+    const existingReport = reportAcudits.find(report => report.joke === currentJoke);
+    if (existingReport) {
+        existingReport.score = score;
+    }
+    else {
+        reportAcudits.push({
+            joke: currentJoke,
+            score: score,
+            date: new Date().toISOString() // Formato ISO
+        });
+    }
+    console.log(reportAcudits);
+};
+// Crear botones de puntuación
+if (scoreButtons) {
+    [1, 2, 3].forEach(score => {
+        const button = document.createElement("button");
+        button.classList.add("btn");
+        button.classList.add("btn-secondary");
+        button.textContent = score.toString();
+        button.addEventListener("click", () => rateJoke(score));
+        scoreButtons.appendChild(button);
+    });
+}
+// Evento para obtener un nuevo chiste
+if (getNewJoke) {
+    getNewJoke.addEventListener("click", displayJoke);
+}
+// Onload
 displayJoke();
