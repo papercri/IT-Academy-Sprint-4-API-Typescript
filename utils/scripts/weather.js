@@ -16,7 +16,6 @@ const getWeather = (lat, lon) => __awaiter(void 0, void 0, void 0, function* () 
         const response = yield fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`);
         const data = yield response.json();
         const { temperature, weathercode } = data.current_weather;
-        console.log(data.current_weather);
         // Weather conditions dictionary
         const conditions = {
             0: "clear ☀️", 1: "mostly clear 🌤️", 2: "partly cloudy ⛅",

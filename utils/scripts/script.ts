@@ -1,7 +1,6 @@
 import { getNewJoke, showJoke, scoreButtons, ReportAcudits, reportAcudits, getJoke, currentJoke, displayJoke, rateJoke } from "./dadJoke.js"
 import { WeatherData, IpInfoData, saludoEl, climaEl, getWeather, getLocation} from "./weather.js"
 
-// Crear botones de puntuación
 if (scoreButtons) {
     [1, 2, 3].forEach(score => {
         const button = document.createElement("button");
@@ -15,7 +14,6 @@ if (scoreButtons) {
     });
 }
 
-// Evento para obtener un nuevo chiste
 if (getNewJoke) {
     getNewJoke.addEventListener("click", displayJoke);  
 }

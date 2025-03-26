@@ -18,7 +18,6 @@ const getWeather = async (lat: number, lon: number): Promise<void> => {
         const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`);
         const data = await response.json();
         const { temperature, weathercode }: WeatherData = data.current_weather;
-        console.log(data.current_weather);
         
         // Weather conditions dictionary
         const conditions: { [key: number]: string } = {
