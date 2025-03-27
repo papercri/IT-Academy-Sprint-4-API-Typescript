@@ -35,7 +35,7 @@ const getWeather = async (lat: number, lon: number): Promise<void> => {
     }
 };
 
-const getLocation = (): void => {
+export const showWeather = (): void => {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -61,4 +61,4 @@ const getLocation = (): void => {
     }
 };
 
-export { WeatherData, IpInfoData, saludoEl, climaEl, getWeather, getLocation }
+

@@ -31,7 +31,7 @@ const getWeather = (lat, lon) => __awaiter(void 0, void 0, void 0, function* () 
         climaEl.textContent = "Could not get the weather.";
     }
 });
-const getLocation = () => {
+export const showWeather = () => {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
@@ -55,4 +55,3 @@ const getLocation = () => {
         climaEl.textContent = "Your browser does not support geolocation.";
     }
 };
-export { saludoEl, climaEl, getWeather, getLocation };

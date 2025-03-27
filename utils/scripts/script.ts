@@ -1,5 +1,46 @@
-import { getNewJoke, showJoke, scoreButtons, ReportAcudits, reportAcudits, getJoke, currentJoke, displayJoke, rateJoke } from "./dadJoke.js"
-import { WeatherData, IpInfoData, saludoEl, climaEl, getWeather, getLocation} from "./weather.js"
+import {  getJoke} from "./dadJoke.js"
+import { showWeather } from "./weather.js"
+import { getCnorris } from "./chuckNorris.js"
+
+const getNewJoke = document.getElementById("new-joke");
+const showJoke = document.getElementById("show-joke");
+const scoreButtons = document.getElementById("score-buttons");
+
+interface ReportAcudits {
+    joke: string,
+    score: number,
+    date: string
+}
+const reportAcudits: ReportAcudits[] = [];
+
+let currentJoke: string = "";
+
+//alterna el chiste de un fetch al otro
+
+const displayJoke = async () => {
+    const isJoke = Math.random() < 0.5;
+    currentJoke = isJoke ? await getJoke() : await getCnorris();
+    console.log(currentJoke);
+
+    if (showJoke) {
+        showJoke.textContent = currentJoke;
+        showJoke.style.fontStyle = isJoke ? "normal" : "italic"; 
+    }
+};
+
+const rateJoke = (score: number) => {
+    const existingReport = reportAcudits.find(report => report.joke === currentJoke);
+    if (existingReport) {
+        existingReport.score = score; 
+    } else {
+        reportAcudits.push({
+            joke: currentJoke,
+            score: score,
+            date: new Date().toISOString() // Formato ISO
+        });
+    }
+    console.log(reportAcudits);
+};
 
 if (scoreButtons) {
     [1, 2, 3].forEach(score => {
@@ -21,6 +62,7 @@ if (getNewJoke) {
 // Onload
 
 displayJoke();
-getLocation();
+showWeather();
+getCnorris();
 
 

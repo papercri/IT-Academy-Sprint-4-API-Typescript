@@ -7,18 +7,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
+export const getCnorris = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield fetch("https://icanhazdadjoke.com/", {
+        const response = yield fetch("https://api.chucknorris.io/jokes/random", {
             headers: {
                 Accept: "application/json"
             }
         });
         if (!response.ok) {
-            throw new Error("Error getting new joke!");
+            throw new Error("Error getting new Chuck Norris joke!");
         }
-        const jokeJSON = yield response.json();
-        return jokeJSON.joke;
+        const cnorrisJSON = yield response.json();
+        return cnorrisJSON.value;
     }
     catch (error) {
         return error.message;
