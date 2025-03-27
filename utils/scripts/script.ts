@@ -1,6 +1,6 @@
 import {  getJoke} from "./dadJoke.js"
-import { showWeather } from "./weather.js"
 import { getCnorris } from "./chuckNorris.js"
+import { showWeather } from "./weather.js"
 
 const getNewJoke = document.getElementById("new-joke");
 const showJoke = document.getElementById("show-joke");
@@ -16,7 +16,6 @@ const reportAcudits: ReportAcudits[] = [];
 let currentJoke: string = "";
 
 //alterna el chiste de un fetch al otro
-
 const displayJoke = async () => {
     const isJoke = Math.random() < 0.5;
     currentJoke = isJoke ? await getJoke() : await getCnorris();
@@ -25,6 +24,7 @@ const displayJoke = async () => {
     if (showJoke) {
         showJoke.textContent = currentJoke;
         showJoke.style.fontStyle = isJoke ? "normal" : "italic"; 
+        //si es chuckNorris se verá en cursiva, de esta manera reconocemos cual de los 2 es
     }
 };
 
@@ -46,7 +46,6 @@ if (scoreButtons) {
     [1, 2, 3].forEach(score => {
         const button = document.createElement("button");
         button.classList.add("btn");
-        button.classList.add("btn-secondary");
         button.textContent = score.toString();
         button.addEventListener("click", () => rateJoke(score));
         if (scoreButtons) {

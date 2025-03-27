@@ -7,35 +7,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const saludoEl = document.getElementById("saludo");
-saludoEl.textContent = `Good Morning!`;
 const climaEl = document.getElementById("clima");
-let currentCity = "your location";
+const tempEl = document.getElementById("temp");
+const cityEl = document.getElementById("city");
+let currentCity = "";
 const getWeather = (lat, lon) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`);
         const data = yield response.json();
         const { temperature, weathercode } = data.current_weather;
-        // Weather conditions dictionary
         const conditions = {
-            0: "clear ☀️", 1: "mostly clear 🌤️", 2: "partly cloudy ⛅",
-            3: "cloudy ☁️", 45: "fog 🌫️", 48: "fog with frost ❄️",
-            51: "light drizzle 🌦️", 53: "drizzle 🌧️", 55: "heavy drizzle 🌧️",
-            61: "light rain 🌧️", 63: "moderate rain 🌧️", 65: "heavy rain ⛈️",
-            71: "light snow 🌨️", 73: "moderate snow 🌨️", 75: "heavy snow ❄️",
-            80: "light showers 🌦️", 81: "moderate showers 🌧️", 82: "heavy showers ⛈️"
+            0: "☀️", 1: "🌤️", 2: "⛅",
+            3: "☁️", 45: "🌫️", 48: "❄️",
+            51: "🌦️", 53: "🌧️", 55: "🌧️",
+            61: "🌧️", 63: "🌧️", 65: "⛈️",
+            71: "🌨️", 73: "🌨️", 75: "❄️",
+            80: "🌦️", 81: "🌧️", 82: "⛈️"
         };
-        climaEl.textContent = `The weather in ${currentCity} is ${conditions[weathercode] || "unknown"} with ${temperature}°C.`;
+        climaEl.textContent = `${conditions[weathercode]}`;
+        tempEl.textContent = `${temperature}°C.`;
+        cityEl.textContent = `${currentCity}`;
     }
     catch (error) {
-        climaEl.textContent = "Could not get the weather.";
+        console.error("Could not get the weather.");
     }
 });
 export const showWeather = () => {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
-            currentCity = "your location";
+            currentCity = "";
             getWeather(latitude, longitude);
         }, () => __awaiter(void 0, void 0, void 0, function* () {
             // If the user blocks geolocation, use the IP
@@ -47,11 +48,11 @@ export const showWeather = () => {
                 getWeather(lat, lon);
             }
             catch (error) {
-                climaEl.textContent = "Could not get the location.";
+                console.error("Could not get the location.");
             }
         }));
     }
     else {
-        climaEl.textContent = "Your browser does not support geolocation.";
+        console.error("Your browser does not support geolocation.");
     }
 };

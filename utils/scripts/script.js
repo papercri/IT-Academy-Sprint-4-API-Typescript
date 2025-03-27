@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getJoke } from "./dadJoke.js";
-import { showWeather } from "./weather.js";
 import { getCnorris } from "./chuckNorris.js";
+import { showWeather } from "./weather.js";
 const getNewJoke = document.getElementById("new-joke");
 const showJoke = document.getElementById("show-joke");
 const scoreButtons = document.getElementById("score-buttons");
@@ -23,6 +23,7 @@ const displayJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     if (showJoke) {
         showJoke.textContent = currentJoke;
         showJoke.style.fontStyle = isJoke ? "normal" : "italic";
+        //si es chuckNorris se verá en cursiva, de esta manera reconocemos cual de los 2 es
     }
 });
 const rateJoke = (score) => {
@@ -43,7 +44,6 @@ if (scoreButtons) {
     [1, 2, 3].forEach(score => {
         const button = document.createElement("button");
         button.classList.add("btn");
-        button.classList.add("btn-secondary");
         button.textContent = score.toString();
         button.addEventListener("click", () => rateJoke(score));
         if (scoreButtons) {

@@ -13,16 +13,44 @@
     <title>Sprint 4</title>
 </head>
 <body>
-    <div class="container text-center d-flex align-items-center justify-content-center min-vh-100">
-        <div class="card shadow-lg text-center d-flex align-items-center justify-content-center flex-column gap-4">
-            <p id="saludo"></p>
-            <p id="clima">Loading weather...</p>
-            <h1>Are you ready to laugh?? <span class="fa-solid fa-face-grin-squint-tears"></span></h1>
-            <h3 id="show-joke" class="mt-2">Loading joke...</h3>
-            <div id="score-buttons" class=" mt-2 d-flex gap-2"></div>
-            <button id="new-joke" class="mt-2 btn btn-primary">Get a new joke</button>
+    <div class="container-fluid text-center mt-5 ">
+        <div class="row align-items-start d-flex">
+            <div class="col col-12  col-lg-2 align-self-start">
+                <div class="clima-parent">
+                    <div class="backg">
+                        <div class="show-clima ">
+                            <div id="city"></div>
+                            <div class="clima-box">
+                                <div id="clima"></div>
+                                <div id="temp"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col col-12 col-lg-8 align-self-center d-flex justify-content-center ">
+            <div class="card-parent">
+                <div class="backg">
+                    <div class="card  text-center d-flex align-items-center justify-content-center flex-column gap-4">
+                        <h1>Are you ready to laugh?? <span class="fa-solid fa-face-grin-squint-tears"></span></h1>
+                        <h3 id="show-joke" class="mt-2">Loading joke...</h3>
+                        <div class="buttons lg-align-self-start lg-ms-5">
+                            <div id="score-buttons" class=" mt-2 d-flex gap-2"></div>
+                            <button id="new-joke" class="mt-4 btn btn-primary">Get a new joke</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col col-lg-2 align-self-end d-none d-lg-block">
+                <div class="clima-parent">
+                    <div class="backg">
+                    </div>
+                </div>
+            </div>
         </div>
-       
     </div>
     <script src="utils/scripts/script.js" type="module" defer></script>
 </body>
