@@ -125,13 +125,13 @@ q:before, q:after {
     border:2px solid white
   }
   #score-buttons button:first-child{
-    background-image: url("../img/smile.png");
+    background-image: url("../img/sad.png");
   }
   #score-buttons button:nth-child(2){
     background-image: url("../img/confused.png");
   }
   #score-buttons button:nth-child(3){
-    background-image: url("../img/sad.png");
+    background-image: url("../img/smile.png");
   }
 
   @media (max-width: 992px) {
